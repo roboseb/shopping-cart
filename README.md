@@ -21,3 +21,32 @@ June 27th, 2022
         -Astrological sign
 
     As an outline, the store will initially generate a few sets of items so that it at least fulfills the project requirements. However, with the use of APIs, it should also be able to generate new items with photos and details. 
+
+June 28th, 2022
+
+    Gonna have to pay rent soon.
+
+    So I've got a pretty straightforward system for generating furniture girls. I really want to find a way to work around the localhost issues with CORS so that I can use more APIs in the future, as this project really would have benefited from some name and other stuff generation. Happy with what I got done in a half day yesterday regardless.
+
+    By the way, new game that stayed up playing last night is Raft. Pretty neat take on open world survival craft. A few similarities to Subnautica in the story and lack of procedural elements. Very fun with friends. 
+
+    Today, I'm gonna try to get all the functionality done. 
+
+    I was struggling with useState again, and decided to do some cooking and let my brain figure out the issue in the background. 
+    I ended up coming to a solution pretty quick after returning, as I had a similar problem previously. STILL don't understand how this shit works at all. It's so different from setState, and it's not just the asynchronicity that I'm struggling with. Regardless, the thing works pretty well, just need to do a bunch of styling. Pretty excited for that.
+
+
+
+---To-Do---
+
+-Local storage
+-item page
+-style item page like wayfair
+-style rest of the site however
+DONE (and tasty)-make pork and rice
+-fix double generating items
+-add item generation based on keyword
+DONE-add cart component
+DONE-add cart functionality
+-add more info for items (price, age, nationality, sign, blood type)
+DONE-remove item from cart
