@@ -5,6 +5,8 @@ import Item from "./components/Item";
 import Cart from "./components/Cart";
 import ItemPage from "./components/ItemPage";
 
+import chevron from './images/chevron-up.svg'
+
 const Store = () => {
 
     const [items, setItems] = useState([]);
@@ -16,11 +18,12 @@ const Store = () => {
 
     const firstNames = ['Ria', 'Veronica', 'Natalie', 'Hazel', 'Maisie', 'Josie', 'Mae', 'Meghan', 'Ava', 'Bertha', 'May', 'Ellie', 'Patricia'];
     const lastNames = ['Howell', 'Henry', 'Barker', 'Elliot', 'Brown', 'Morton', 'Garcia', 'Kennedy', 'Hale', 'Preston', 'Rosales', 'Cole', 'Parks', 'Ramirez', 'Morgan'];
+    const races = ['Pure Black', 'Mocha', 'Dark Walnut', 'Egg Shell', 'Blush']
 
     //Generate items with fetched images and random info.
     const generateItems = (term) => {
         async function getImages() {
-            let response = await fetch(`https://api.unsplash.com/search/photos/?query=${term}&per_page=10&client_id=a0UGbuGei6IPbMG18JU5nmQOyIPN-q7p2FkNy-zc0zI`);
+            let response = await fetch(`https://api.unsplash.com/search/photos/?query=${term}&per_page=11&client_id=a0UGbuGei6IPbMG18JU5nmQOyIPN-q7p2FkNy-zc0zI`);
             let images = await response.json();
 
             return images['results'];
@@ -45,10 +48,12 @@ const Store = () => {
         const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
         const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
 
-        const amount = 1;
+        const amount = 0;
         const cost = Math.floor(Math.random() * 4000) + 1000.99;
 
-        const info = {firstName, lastName, amount, cost};
+        const race = races[Math.floor(Math.random() * races.length)];
+
+        const info = {firstName, lastName, amount, cost, race};
         
 
         return info;
@@ -63,21 +68,40 @@ const Store = () => {
     }, []);
 
     //Add item to shopping cart on click.
-    const purchaseItem = (index) => {
+    const purchaseItem = (index, item, amount) => {
+        
+
+        let newIndex;
+        let newAmount = parseInt(amount);
+
+        if (index === -1 && item !== undefined) {
+            newIndex = items.indexOf(item);
+        } else {
+            newIndex = index;
+        }
 
         //Increment item counter if it's already in cart.
-        if (cartItems.includes(items[index])) {
+        if (cartItems.includes(items[newIndex])) {
             
+            //Update item's count.
             const tempState = cartItems;
-            const tempItem = tempState[tempState.indexOf(items[index])];
-            tempItem.amount += 1; 
+            const tempItem = tempState[tempState.indexOf(items[newIndex])];
+            tempItem.amount += 1 * newAmount; 
             
             setCartItems(cartItems => cartItems = tempState);
+
+            //Force rerender.
             setCounter(counter + 1);
 
-        //Add item to cart if it's not yet in cart.
+        //Add the item to your cart if not already there based on amount.
         } else {
-            setCartItems(cartItems => cartItems.concat(items[index]));
+
+            //Update item's count.
+            const tempState = items;
+            const tempItem = tempState[tempState.indexOf(items[newIndex])];
+            tempItem.amount += 1 * newAmount; 
+
+            setCartItems(cartItems => cartItems.concat(items[newIndex]));
         }
     }
 
@@ -90,6 +114,20 @@ const Store = () => {
 
         setCartItems(tempItems);
         setCounter(counter + 1);
+
+        //Reset item's count.
+        resetItemCount(item);
+    }
+
+    //Reset an item's count.
+    const resetItemCount = (item) => {
+        let tempItems = items;
+
+        let tempItem = tempItems[tempItems.indexOf(item)];
+        tempItem.amount = 0;
+        
+        tempItems[tempItems.indexOf(item)] = tempItem;
+        setItems(tempItems);
     }
 
     //Show an item's info on click, or hide it if already open.
@@ -106,6 +144,23 @@ const Store = () => {
         }
 
         setCurrentInfo(info);
+    }
+
+    const moveChevron = (index) => {
+        console.log(index);
+
+        const storeItems = Array.from(document.getElementById('storeitems').children);
+        const hovered = storeItems[index];
+        const rect = hovered.getBoundingClientRect();
+        console.log(rect.left);
+
+
+
+
+        const chevron = document.getElementById('chevron');
+
+        chevron.style.left = `${rect.left + rect.width/2}px`;
+
     }
 
 
@@ -130,14 +185,18 @@ const Store = () => {
                         index={index}
                         purchaseItem={purchaseItem}
                         toggleInfo={toggleInfo}
+                        moveChevron={moveChevron}
                     />
                 })}
             </div>
             
             <ItemPage 
-            toggleInfo={toggleInfo}
+                toggleInfo={toggleInfo}
+                purchaseItem={purchaseItem}
                 info={currentInfo}
             />
+
+            <img id='chevron' src={chevron} alt=''></img>
 
         </div>
     );

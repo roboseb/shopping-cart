@@ -8,13 +8,15 @@ const Item = (props) => {
                 onMouseEnter={() => props.displayInfo(props.index)}
             ></img>
             <div id='infobox'
+                onMouseEnter={() => props.moveChevron(props.index)}
                 onClick={() => props.toggleInfo(props.item)}>
                 <div id='itemname'>{props.firstName} {props.lastName}</div>
                 <div id='itemcost'>{props.cost}</div>
-                <button 
+                {/* <button 
                     id='buybtn'
                     onClick={() => props.purchaseItem(props.index)}
-                >Buy</button>
+                >Buy</button> */}
+                
             </div>
 
         </div>

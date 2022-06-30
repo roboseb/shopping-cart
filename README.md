@@ -35,6 +35,12 @@ June 28th, 2022
     I was struggling with useState again, and decided to do some cooking and let my brain figure out the issue in the background. 
     I ended up coming to a solution pretty quick after returning, as I had a similar problem previously. STILL don't understand how this shit works at all. It's so different from setState, and it's not just the asynchronicity that I'm struggling with. Regardless, the thing works pretty well, just need to do a bunch of styling. Pretty excited for that.
 
+June 29th, 2022
+
+    My left ring finger is messed up. Yesterday, many of my fingers hurt but today it's just that one. I had a moment where I though I might have that disease where your body just slowly turns to bone. Probably an overreaction. 
+
+    There's something way too fun about recreating a webpage. I feel like a counterfeiter. With devtools, it's even easier than counterfeiting because so many of the details I can match exactly. I can measure exact widths and heights of the layout, and I can copy most colours exactly. I think my font is close, but it's obviously not the same. 
+
 
 
 ---To-Do---
@@ -50,3 +56,4 @@ DONE-add cart component
 DONE-add cart functionality
 -add more info for items (price, age, nationality, sign, blood type)
 DONE-remove item from cart
+-loading screen for store

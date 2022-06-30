@@ -9,10 +9,12 @@ const Cart = (props) => {
 
         let tempTotal = 0;
 
-
         props.items.map((item) => {
             tempTotal += item.cost * item.amount;
         });
+
+        tempTotal = tempTotal.toFixed(2);
+        console.log(tempTotal);
 
         setTotal(tempTotal);
     }
@@ -24,17 +26,19 @@ const Cart = (props) => {
     const toggleCart = () => {
         const cart = document.getElementById('cart');
         cart.classList.toggle('hidden');
+
+        const cartToggle = document.getElementById('carttoggle');
+        cartToggle.classList.toggle('cartbtnhidden');
     }
 
 
     return (
         <div id='cart'>
-            <h2>Cart</h2>
             {props.items.map((item, index) => {
                 if (item !== undefined) {
                     return <div
                         key={uniqid()}
-                    >{item.amount} {item.firstName} ${item.cost * item.amount}
+                    >{item.amount} {item.firstName} ${(item.cost * item.amount).toFixed(2)}
                     <button 
                         id='removeitembtn'
                         onClick={() => props.removeItem(item)}
@@ -47,7 +51,7 @@ const Cart = (props) => {
             <div 
                 id='carttoggle'
                 onClick={toggleCart}
-                >Toggle</div>
+                >Cart</div>
             
         </div>
     )

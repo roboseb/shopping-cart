@@ -5,13 +5,13 @@ const Nav = () => {
     return (
         
       <div id="nav">
-          <h1>Navbar</h1>
+          <h1>LAYTHeRe.CA</h1>
           <ul id='navlinks'>
-              <Link to='/'>
-                <li>Home</li>
+              <Link to='/' style={{ textDecoration: 'none' }}>
+                <li id='homelink'>Home</li>
               </Link>
-              <Link to='/store'>
-                <li>Store</li>
+              <Link to='/store' style={{ textDecoration: 'none' }}>
+                <li id='storelink'>Store</li>
               </Link>
           </ul>
       </div>
