@@ -14,6 +14,8 @@ const Store = () => {
     const [currentInfo, setCurrentInfo] = useState(null);
     const [counter, setCounter] = useState(0);
 
+    const [keywordSource, setKeywordSource] = useState(null);
+
     const [loaded, setLoaded] = useState(false);
 
     const firstNames = ['Ria', 'Veronica', 'Natalie', 'Hazel', 'Maisie', 'Josie', 'Mae', 'Meghan', 'Ava', 'Bertha', 'May', 'Ellie', 'Patricia'];
@@ -43,6 +45,31 @@ const Store = () => {
         });
     }
 
+    async function fetchImageByTerm(term) {
+        async function getImages() {
+            let response = await fetch(`https://api.unsplash.com/search/photos/?query=${term}&per_page=11&client_id=a0UGbuGei6IPbMG18JU5nmQOyIPN-q7p2FkNy-zc0zI`);
+            let images = await response.json();
+
+            return images['results'];
+        }
+
+        //Assign response keyword src.
+        getImages().then(response => {
+
+            //If no results found for keyword, show error message and return.
+            if (response[0] === undefined) {
+                const errorMessage = document.getElementById('errormsg');
+                errorMessage.style.transform = 'translate(0%, -100%)'; 
+                setTimeout(() => {
+                    errorMessage.style.transform = null; 
+                }, 2000);               
+                return;
+            }
+            const source = response[0]['urls']['regular'];
+            setKeywordSource(source);
+        });
+    }
+
     //Generate random info for each piece of furniture.
     const generateInfo = () => {
         const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
@@ -69,6 +96,11 @@ const Store = () => {
 
     //Add item to shopping cart on click.
     const purchaseItem = (index, item, amount) => {
+
+        //Prevent attempting to add custom items to cart.
+        if (items.indexOf(item) === -1) {
+            return;
+        }
         
 
         let newIndex;
@@ -144,24 +176,53 @@ const Store = () => {
         }
 
         setCurrentInfo(info);
+
+        //Toggle text colour if an item page is open.
+        const cart = document.getElementById('cart');
+
+        if (itemPage.classList.contains('showninfo')) {
+            cart.style.color = 'black';
+        } else {
+            cart.style.color = 'white';
+        }
+
+        //Toggle trash buttons' colour.
+        const trashButtons = Array.from(document.querySelectorAll('.removeitembtn'));
+
+        trashButtons.forEach(button => {
+            button.classList.toggle('black');
+        });
+
+        //Toggle cart icon's color.
+        const cartIcon = document.getElementById('carticon');
+        cartIcon.classList.toggle('black');
     }
-
+    //Slide red chevron to point at hovered item.
     const moveChevron = (index) => {
-        console.log(index);
-
         const storeItems = Array.from(document.getElementById('storeitems').children);
         const hovered = storeItems[index];
         const rect = hovered.getBoundingClientRect();
-        console.log(rect.left);
-
-
-
 
         const chevron = document.getElementById('chevron');
 
         chevron.style.left = `${rect.left + rect.width/2}px`;
-
     }
+
+    //Generate a custom furniture girl based on keyword.
+    const generateCustom = () => {
+        const keyword = document.getElementById('keyword').value;
+        fetchImageByTerm(keyword);
+    }
+
+    //On custom keyword source change, create a new item page with
+    //generated info and custom keyword image fetch source.
+    useEffect(() => {
+        if (keywordSource !== null) {
+            const info = generateInfo();
+            info.src = keywordSource;
+            toggleInfo(info);
+        }
+    }, [keywordSource]);
 
 
     return (
@@ -197,6 +258,22 @@ const Store = () => {
             />
 
             <img id='chevron' src={chevron} alt=''></img>
+
+            <div id='custompanel'>
+                <div id='errormsg'>try another keyword</div>
+                <input 
+                    id='keyword' 
+                    type='text' 
+                    placeholder='keyword' 
+                    autoComplete="off"
+                    spellCheck='off'    
+                ></input>
+                <button 
+                    id='customitembtn'
+                    onClick={generateCustom}
+                >submit</button>
+            </div>
+            
 
         </div>
     );

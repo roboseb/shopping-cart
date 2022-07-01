@@ -1,5 +1,33 @@
 #Seb's Shopping Cart
 
+---Features---
+
+    -Remember when people though waifair was selling people in cabinets?
+    this is that.
+
+    -Functional store page where you can add items to cart, adjust the
+    amount you add, and remove items.
+
+    -Furniture images fetched via Unsplash API
+
+    -Store item info generated randomly from sets of name and colours,
+    and price randomized as well.
+
+    -Show/hide cart
+
+    -Dynamic cart colours based on background
+
+    -Home page with fake store info.
+
+    -Red text on the home page either spazzes out or just grows on hover, both look cool!
+
+    -Nice colour palette, shout out to coolors.co
+
+    -All kinds of little animations as usual
+
+    -Hidden option to generate your very own item page with an image
+    based on your chosen keyword!
+
 ---Devlog---
 
 June 27th, 2022
@@ -41,19 +69,30 @@ June 29th, 2022
 
     There's something way too fun about recreating a webpage. I feel like a counterfeiter. With devtools, it's even easier than counterfeiting because so many of the details I can match exactly. I can measure exact widths and heights of the layout, and I can copy most colours exactly. I think my font is close, but it's obviously not the same. 
 
+June 30th, 2022
+
+    Hey, welcome to the final day! Just finished up the cart, and I like the look of it. Took some iteration to have it roughly match both the waifair item page and also the overall site styling. But I think I got there.
+
+    Yeesh, I really started having a proper vision for the site when
+    I started writing out the little blurbs on the home page. It's pretty gross actually, in a way. The little furniture girl I drew
+    probably doesn't help. Welp. It's an asthetic I guess. And it looks pretty solid as usual, according to me. I nice test I've been using for the style I'm looking for is imagining any page from a site on a shirt. Would I buy the shirt if I came across it in a thrift store? If yes, probably, it passes the test. Even the little red furniture girl might be a step above my usual character art for these.
+
+    That's it, two more projects for the full-stack javascript course.
+
 
 
 ---To-Do---
 
--Local storage
--item page
--style item page like wayfair
--style rest of the site however
+CANCEL-Local storage
+DONE-item page
+DONE-style item page like wayfair
+DONE-style rest of the site however
 DONE (and tasty)-make pork and rice
--fix double generating items
--add item generation based on keyword
+DONE-fix double generating items
+DONE-add item generation based on keyword
 DONE-add cart component
 DONE-add cart functionality
--add more info for items (price, age, nationality, sign, blood type)
+DONE-add more info for items (price, age, nationality, sign, blood type)
 DONE-remove item from cart
--loading screen for store
+CANCEL-loading screen for store
+DONE-fix image ratio bug

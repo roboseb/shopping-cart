@@ -1,6 +1,9 @@
 import {useState, useEffect } from "react";
 import uniqid from "uniqid";
 
+import trash from "../images/trash.svg"
+import cart from "../images/cart.svg"
+
 const Cart = (props) => {
 
     const [total, setTotal] = useState(0);
@@ -14,7 +17,6 @@ const Cart = (props) => {
         });
 
         tempTotal = tempTotal.toFixed(2);
-        console.log(tempTotal);
 
         setTotal(tempTotal);
     }
@@ -38,16 +40,21 @@ const Cart = (props) => {
                 if (item !== undefined) {
                     return <div
                         key={uniqid()}
+                        id='cartitem'
                     >{item.amount} {item.firstName} ${(item.cost * item.amount).toFixed(2)}
                     <button 
-                        id='removeitembtn'
+                        className='removeitembtn black'
                         onClick={() => props.removeItem(item)}
-                    >Remove</button>
+                    >
+                        <img src={trash} alt=""></img>
+                    </button>
                     </div>
                 }
             })}
 
-            <div id='carttotal'>Total: ${total}</div>
+            <div id='carttotal'>Total: ${total}
+                <img id='carticon' src={cart} alt=""></img>
+            </div>
             <div 
                 id='carttoggle'
                 onClick={toggleCart}
