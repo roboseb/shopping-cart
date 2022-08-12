@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/shopping-cart/static/css/main.455cceb3.css",
+    "main.js": "/shopping-cart/static/js/main.1aee4d53.js",
+    "static/media/tommy.otf": "/shopping-cart/static/media/tommy.101be848d2d18e7296bc.otf",
+    "static/media/cabinet.png": "/shopping-cart/static/media/cabinet.c85359258af3293620ad.png",
+    "static/media/tommylight.otf": "/shopping-cart/static/media/tommylight.baa9639fea2a3259ba0b.otf",
+    "static/media/wood.jpg": "/shopping-cart/static/media/wood.acf121340f1c9f219212.jpg",
+    "static/media/girl.png": "/shopping-cart/static/media/girl.d1f2021b92c9680eb6cf.png",
+    "static/media/nostrud.ttf": "/shopping-cart/static/media/nostrud.c101cae6d65abaef9dc8.ttf",
+    "index.html": "/shopping-cart/index.html",
+    "static/media/trash.svg": "/shopping-cart/static/media/trash.bba7f8a90befcbd8f9c03856bf0b3e29.svg",
+    "static/media/cart.svg": "/shopping-cart/static/media/cart.33ce5d1587bf4a7a971bb64d9418e125.svg",
+    "static/media/heart.svg": "/shopping-cart/static/media/heart.b65bcc72103bb8c063ec3e8e5b37c5e4.svg",
+    "static/media/arrowleft.svg": "/shopping-cart/static/media/arrowleft.8edfe59d267ad47fbed40e1710984375.svg",
+    "static/media/chevron-up.svg": "/shopping-cart/static/media/chevron-up.0f9ac6feebc71692b1c5edb4cb434f54.svg",
+    "main.455cceb3.css.map": "/shopping-cart/static/css/main.455cceb3.css.map",
+    "main.1aee4d53.js.map": "/shopping-cart/static/js/main.1aee4d53.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.455cceb3.css",
+    "static/js/main.1aee4d53.js"
+  ]
+}
