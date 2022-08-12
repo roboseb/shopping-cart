@@ -6,7 +6,6 @@ import Nav from "./Nav";
 
 const App = () => {
     return (
-        <BrowserRouter>
             <div className="App">
             <Nav />
 
@@ -17,7 +16,6 @@ const App = () => {
 
 
             </div>
-        </BrowserRouter>
 
   );
 }
